@@ -8337,24 +8337,24 @@ define(['exports'], function (exports) { 'use strict';
 
   //
 
-  function Int8BufferAttribute$1( array, itemSize, normalized ) {
+  function Int8BufferAttribute( array, itemSize, normalized ) {
 
   	BufferAttribute.call( this, new Int8Array( array ), itemSize, normalized );
 
   }
 
-  Int8BufferAttribute$1.prototype = Object.create( BufferAttribute.prototype );
-  Int8BufferAttribute$1.prototype.constructor = Int8BufferAttribute$1;
+  Int8BufferAttribute.prototype = Object.create( BufferAttribute.prototype );
+  Int8BufferAttribute.prototype.constructor = Int8BufferAttribute;
 
 
-  function Uint8BufferAttribute$1( array, itemSize, normalized ) {
+  function Uint8BufferAttribute( array, itemSize, normalized ) {
 
   	BufferAttribute.call( this, new Uint8Array( array ), itemSize, normalized );
 
   }
 
-  Uint8BufferAttribute$1.prototype = Object.create( BufferAttribute.prototype );
-  Uint8BufferAttribute$1.prototype.constructor = Uint8BufferAttribute$1;
+  Uint8BufferAttribute.prototype = Object.create( BufferAttribute.prototype );
+  Uint8BufferAttribute.prototype.constructor = Uint8BufferAttribute;
 
 
   function Uint8ClampedBufferAttribute( array, itemSize, normalized ) {
@@ -8367,14 +8367,14 @@ define(['exports'], function (exports) { 'use strict';
   Uint8ClampedBufferAttribute.prototype.constructor = Uint8ClampedBufferAttribute;
 
 
-  function Int16BufferAttribute$1( array, itemSize, normalized ) {
+  function Int16BufferAttribute( array, itemSize, normalized ) {
 
   	BufferAttribute.call( this, new Int16Array( array ), itemSize, normalized );
 
   }
 
-  Int16BufferAttribute$1.prototype = Object.create( BufferAttribute.prototype );
-  Int16BufferAttribute$1.prototype.constructor = Int16BufferAttribute$1;
+  Int16BufferAttribute.prototype = Object.create( BufferAttribute.prototype );
+  Int16BufferAttribute.prototype.constructor = Int16BufferAttribute;
 
 
   function Uint16BufferAttribute( array, itemSize, normalized ) {
@@ -8387,14 +8387,14 @@ define(['exports'], function (exports) { 'use strict';
   Uint16BufferAttribute.prototype.constructor = Uint16BufferAttribute;
 
 
-  function Int32BufferAttribute$1( array, itemSize, normalized ) {
+  function Int32BufferAttribute( array, itemSize, normalized ) {
 
   	BufferAttribute.call( this, new Int32Array( array ), itemSize, normalized );
 
   }
 
-  Int32BufferAttribute$1.prototype = Object.create( BufferAttribute.prototype );
-  Int32BufferAttribute$1.prototype.constructor = Int32BufferAttribute$1;
+  Int32BufferAttribute.prototype = Object.create( BufferAttribute.prototype );
+  Int32BufferAttribute.prototype.constructor = Int32BufferAttribute;
 
 
   function Uint32BufferAttribute( array, itemSize, normalized ) {
@@ -8407,14 +8407,14 @@ define(['exports'], function (exports) { 'use strict';
   Uint32BufferAttribute.prototype.constructor = Uint32BufferAttribute;
 
 
-  function Float32BufferAttribute$1( array, itemSize, normalized ) {
+  function Float32BufferAttribute( array, itemSize, normalized ) {
 
   	BufferAttribute.call( this, new Float32Array( array ), itemSize, normalized );
 
   }
 
-  Float32BufferAttribute$1.prototype = Object.create( BufferAttribute.prototype );
-  Float32BufferAttribute$1.prototype.constructor = Float32BufferAttribute$1;
+  Float32BufferAttribute.prototype = Object.create( BufferAttribute.prototype );
+  Float32BufferAttribute.prototype.constructor = Float32BufferAttribute;
 
 
   function Float64BufferAttribute( array, itemSize, normalized ) {
@@ -9007,15 +9007,15 @@ define(['exports'], function (exports) { 'use strict';
 
   		if ( object.isPoints || object.isLine ) {
 
-  			var positions = new Float32BufferAttribute$1( geometry.vertices.length * 3, 3 );
-  			var colors = new Float32BufferAttribute$1( geometry.colors.length * 3, 3 );
+  			var positions = new Float32BufferAttribute( geometry.vertices.length * 3, 3 );
+  			var colors = new Float32BufferAttribute( geometry.colors.length * 3, 3 );
 
   			this.addAttribute( 'position', positions.copyVector3sArray( geometry.vertices ) );
   			this.addAttribute( 'color', colors.copyColorsArray( geometry.colors ) );
 
   			if ( geometry.lineDistances && geometry.lineDistances.length === geometry.vertices.length ) {
 
-  				var lineDistances = new Float32BufferAttribute$1( geometry.lineDistances.length, 1 );
+  				var lineDistances = new Float32BufferAttribute( geometry.lineDistances.length, 1 );
 
   				this.addAttribute( 'lineDistance', lineDistances.copyArray( geometry.lineDistances ) );
 
@@ -9058,7 +9058,7 @@ define(['exports'], function (exports) { 'use strict';
 
   		}
 
-  		this.addAttribute( 'position', new Float32BufferAttribute$1( position, 3 ) );
+  		this.addAttribute( 'position', new Float32BufferAttribute( position, 3 ) );
 
   		return this;
 
@@ -9249,7 +9249,7 @@ define(['exports'], function (exports) { 'use strict';
 
   				var morphTarget = morphTargets[ i ];
 
-  				var attribute = new Float32BufferAttribute$1( morphTarget.length * 3, 3 );
+  				var attribute = new Float32BufferAttribute( morphTarget.length * 3, 3 );
 
   				array.push( attribute.copyVector3sArray( morphTarget ) );
 
@@ -9263,14 +9263,14 @@ define(['exports'], function (exports) { 'use strict';
 
   		if ( geometry.skinIndices.length > 0 ) {
 
-  			var skinIndices = new Float32BufferAttribute$1( geometry.skinIndices.length * 4, 4 );
+  			var skinIndices = new Float32BufferAttribute( geometry.skinIndices.length * 4, 4 );
   			this.addAttribute( 'skinIndex', skinIndices.copyVector4sArray( geometry.skinIndices ) );
 
   		}
 
   		if ( geometry.skinWeights.length > 0 ) {
 
-  			var skinWeights = new Float32BufferAttribute$1( geometry.skinWeights.length * 4, 4 );
+  			var skinWeights = new Float32BufferAttribute( geometry.skinWeights.length * 4, 4 );
   			this.addAttribute( 'skinWeight', skinWeights.copyVector4sArray( geometry.skinWeights ) );
 
   		}
@@ -9957,9 +9957,9 @@ define(['exports'], function (exports) { 'use strict';
   	// build geometry
 
   	this.setIndex( indices );
-  	this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-  	this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
-  	this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
+  	this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+  	this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
+  	this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
 
   }
 
@@ -12229,7 +12229,7 @@ define(['exports'], function (exports) { 'use strict';
 
   					}
 
-  					geometry.addAttribute( 'lineDistance', new Float32BufferAttribute$1( lineDistances, 1 ) );
+  					geometry.addAttribute( 'lineDistance', new Float32BufferAttribute( lineDistances, 1 ) );
 
   				} else {
 
@@ -16854,9 +16854,9 @@ define(['exports'], function (exports) { 'use strict';
   	// build geometry
 
   	this.setIndex( indices );
-  	this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-  	this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
-  	this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
+  	this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+  	this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
+  	this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
 
   	function buildPlane( u, v, w, udir, vdir, width, height, depth, gridX, gridY, materialIndex ) {
 
@@ -17054,9 +17054,9 @@ define(['exports'], function (exports) { 'use strict';
   	// build geometry
 
   	this.setIndex( indices );
-  	this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-  	this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
-  	this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
+  	this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+  	this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
+  	this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
 
   	function generateTorso() {
 
@@ -21149,9 +21149,9 @@ define(['exports'], function (exports) { 'use strict';
   	// build geometry
 
   	this.setIndex( indices );
-  	this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-  	this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
-  	this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
+  	this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+  	this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
+  	this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
 
   }
 
@@ -28797,9 +28797,9 @@ define(['exports'], function (exports) { 'use strict';
 
   	// build non-indexed geometry
 
-  	this.addAttribute( 'position', new Float32BufferAttribute$1( vertexBuffer, 3 ) );
-  	this.addAttribute( 'normal', new Float32BufferAttribute$1( vertexBuffer.slice(), 3 ) );
-  	this.addAttribute( 'uv', new Float32BufferAttribute$1( uvBuffer, 2 ) );
+  	this.addAttribute( 'position', new Float32BufferAttribute( vertexBuffer, 3 ) );
+  	this.addAttribute( 'normal', new Float32BufferAttribute( vertexBuffer.slice(), 3 ) );
+  	this.addAttribute( 'uv', new Float32BufferAttribute( uvBuffer, 2 ) );
 
   	if ( detail === 0 ) {
 
@@ -29233,9 +29233,9 @@ define(['exports'], function (exports) { 'use strict';
   	// build geometry
 
   	this.setIndex( indices );
-  	this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-  	this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
-  	this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
+  	this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+  	this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
+  	this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
 
   }
 
@@ -29469,13 +29469,13 @@ define(['exports'], function (exports) { 'use strict';
   		arrowGeometry.translate( 0, 0.5, 0 );
 
   		var lineXGeometry = new BufferGeometry();
-  		lineXGeometry.addAttribute( 'position', new Float32BufferAttribute$1( [ 0, 0, 0, 1, 0, 0 ], 3 ) );
+  		lineXGeometry.addAttribute( 'position', new Float32BufferAttribute( [ 0, 0, 0, 1, 0, 0 ], 3 ) );
 
   		var lineYGeometry = new BufferGeometry();
-  		lineYGeometry.addAttribute( 'position', new Float32BufferAttribute$1( [ 0, 0, 0, 0, 1, 0 ], 3 ) );
+  		lineYGeometry.addAttribute( 'position', new Float32BufferAttribute( [ 0, 0, 0, 0, 1, 0 ], 3 ) );
 
   		var lineZGeometry = new BufferGeometry();
-  		lineZGeometry.addAttribute( 'position', new Float32BufferAttribute$1( [ 0, 0, 0, 0, 0, 1 ], 3 ) );
+  		lineZGeometry.addAttribute( 'position', new Float32BufferAttribute( [ 0, 0, 0, 0, 0, 1 ], 3 ) );
 
   		this.handleGizmos = {
 
@@ -29608,7 +29608,7 @@ define(['exports'], function (exports) { 'use strict';
 
   			}
 
-  			geometry.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
+  			geometry.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
   			return geometry;
 
   		};
@@ -29743,13 +29743,13 @@ define(['exports'], function (exports) { 'use strict';
   		arrowGeometry.translate( 0, 0.5, 0 );
 
   		var lineXGeometry = new BufferGeometry();
-  		lineXGeometry.addAttribute( 'position', new Float32BufferAttribute$1( [ 0, 0, 0,  1, 0, 0 ], 3 ) );
+  		lineXGeometry.addAttribute( 'position', new Float32BufferAttribute( [ 0, 0, 0,  1, 0, 0 ], 3 ) );
 
   		var lineYGeometry = new BufferGeometry();
-  		lineYGeometry.addAttribute( 'position', new Float32BufferAttribute$1( [ 0, 0, 0,  0, 1, 0 ], 3 ) );
+  		lineYGeometry.addAttribute( 'position', new Float32BufferAttribute( [ 0, 0, 0,  0, 1, 0 ], 3 ) );
 
   		var lineZGeometry = new BufferGeometry();
-  		lineZGeometry.addAttribute( 'position', new Float32BufferAttribute$1( [ 0, 0, 0,  0, 0, 1 ], 3 ) );
+  		lineZGeometry.addAttribute( 'position', new Float32BufferAttribute( [ 0, 0, 0,  0, 0, 1 ], 3 ) );
 
   		this.handleGizmos = {
 
@@ -31810,8 +31810,8 @@ define(['exports'], function (exports) { 'use strict';
 
   		// build geometry
 
-  		this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-  		this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
+  		this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+  		this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
 
   	}
 
@@ -39025,9 +39025,9 @@ define(['exports'], function (exports) { 'use strict';
 
   		// build geometry
 
-  		this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-  		this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
-  		this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
+  		this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+  		this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
+  		this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
 
   		function generate() {
 
@@ -41690,7 +41690,7 @@ define(['exports'], function (exports) { 'use strict';
 
   	// build geometry
 
-  	this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
+  	this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
 
   }
 
@@ -41710,8 +41710,8 @@ define(['exports'], function (exports) { 'use strict';
   	var index = [ 0, 2, 1, 2, 3, 1, 2, 4, 3, 4, 5, 3, 4, 6, 5, 6, 7, 5 ];
 
   	this.setIndex( index );
-  	this.addAttribute( 'position', new Float32BufferAttribute$1( positions, 3 ) );
-  	this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
+  	this.addAttribute( 'position', new Float32BufferAttribute( positions, 3 ) );
+  	this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
 
   };
 
@@ -43413,12 +43413,12 @@ define(['exports'], function (exports) { 'use strict';
 
   				var objDefaultMaterial = defaultMaterial;
   				var mesh = meshes[ i ];
-  				var vertices = new Float32BufferAttribute$1( mesh.vertices, 3 );
+  				var vertices = new Float32BufferAttribute( mesh.vertices, 3 );
   				var normals = null;
 
   				if ( mesh.normals.length ) {
 
-  					normals = new Float32BufferAttribute$1( mesh.normals, 3 );
+  					normals = new Float32BufferAttribute( mesh.normals, 3 );
 
   				}
 
@@ -43578,23 +43578,23 @@ define(['exports'], function (exports) { 'use strict';
   			}
 
   			geometry.setIndex( indices );
-  			geometry.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
+  			geometry.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
 
   			if ( normals.length > 0 ) {
 
-  				geometry.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
+  				geometry.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
 
   			}
 
   			if ( uvs.length > 0 ) {
 
-  				geometry.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
+  				geometry.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
 
   			}
 
   			if ( colors.length > 0 ) {
 
-  				geometry.addAttribute( 'color', new Float32BufferAttribute$1( colors, 3 ) );
+  				geometry.addAttribute( 'color', new Float32BufferAttribute( colors, 3 ) );
 
   			}
 
@@ -47906,7 +47906,7 @@ define(['exports'], function (exports) { 'use strict';
 
   			}
 
-  			geometry.addAttribute( 'position', new Float32BufferAttribute$1( positions, 3 ) );
+  			geometry.addAttribute( 'position', new Float32BufferAttribute( positions, 3 ) );
 
   			// normals
 
@@ -47918,7 +47918,7 @@ define(['exports'], function (exports) { 'use strict';
 
   				}
 
-  				geometry.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
+  				geometry.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
 
   			}
 
@@ -47926,7 +47926,7 @@ define(['exports'], function (exports) { 'use strict';
 
   			if ( uvs ) {
 
-  				geometry.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
+  				geometry.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
 
   			}
 
@@ -48484,7 +48484,7 @@ define(['exports'], function (exports) { 'use strict';
 
   					}
 
-  					geometry.addAttribute( 'lineDistance', new Float32BufferAttribute$1( lineDistances, 1 ) );
+  					geometry.addAttribute( 'lineDistance', new Float32BufferAttribute( lineDistances, 1 ) );
 
   				} else {
 
@@ -50850,13 +50850,13 @@ define(['exports'], function (exports) { 'use strict';
 
   			// build geometry
 
-  			if ( position.array.length > 0 ) { geometry.addAttribute( 'position', new Float32BufferAttribute$1( position.array, position.stride ) ); }
-  			if ( normal.array.length > 0 ) { geometry.addAttribute( 'normal', new Float32BufferAttribute$1( normal.array, normal.stride ) ); }
-  			if ( color.array.length > 0 ) { geometry.addAttribute( 'color', new Float32BufferAttribute$1( color.array, color.stride ) ); }
-  			if ( uv.array.length > 0 ) { geometry.addAttribute( 'uv', new Float32BufferAttribute$1( uv.array, uv.stride ) ); }
+  			if ( position.array.length > 0 ) { geometry.addAttribute( 'position', new Float32BufferAttribute( position.array, position.stride ) ); }
+  			if ( normal.array.length > 0 ) { geometry.addAttribute( 'normal', new Float32BufferAttribute( normal.array, normal.stride ) ); }
+  			if ( color.array.length > 0 ) { geometry.addAttribute( 'color', new Float32BufferAttribute( color.array, color.stride ) ); }
+  			if ( uv.array.length > 0 ) { geometry.addAttribute( 'uv', new Float32BufferAttribute( uv.array, uv.stride ) ); }
 
-  			if ( skinIndex.array.length > 0 ) { geometry.addAttribute( 'skinIndex', new Float32BufferAttribute$1( skinIndex.array, skinIndex.stride ) ); }
-  			if ( skinWeight.array.length > 0 ) { geometry.addAttribute( 'skinWeight', new Float32BufferAttribute$1( skinWeight.array, skinWeight.stride ) ); }
+  			if ( skinIndex.array.length > 0 ) { geometry.addAttribute( 'skinIndex', new Float32BufferAttribute( skinIndex.array, skinIndex.stride ) ); }
+  			if ( skinWeight.array.length > 0 ) { geometry.addAttribute( 'skinWeight', new Float32BufferAttribute( skinWeight.array, skinWeight.stride ) ); }
 
   			build.data = geometry;
   			build.type = primitives[ 0 ].type;
@@ -58134,7 +58134,7 @@ define(['exports'], function (exports) { 'use strict';
 
   		var buffers = genBuffers( geoInfo );
 
-  		var positionAttribute = new Float32BufferAttribute$1( buffers.vertex, 3 );
+  		var positionAttribute = new Float32BufferAttribute( buffers.vertex, 3 );
 
   		preTransform.applyToBufferAttribute( positionAttribute );
 
@@ -58142,7 +58142,7 @@ define(['exports'], function (exports) { 'use strict';
 
   		if ( buffers.colors.length > 0 ) {
 
-  			geo.addAttribute( 'color', new Float32BufferAttribute$1( buffers.colors, 3 ) );
+  			geo.addAttribute( 'color', new Float32BufferAttribute( buffers.colors, 3 ) );
 
   		}
 
@@ -58150,7 +58150,7 @@ define(['exports'], function (exports) { 'use strict';
 
   			geo.addAttribute( 'skinIndex', new Uint16BufferAttribute( buffers.weightsIndices, 4 ) );
 
-  			geo.addAttribute( 'skinWeight', new Float32BufferAttribute$1( buffers.vertexWeights, 4 ) );
+  			geo.addAttribute( 'skinWeight', new Float32BufferAttribute( buffers.vertexWeights, 4 ) );
 
   			// used later to bind the skeleton to the model
   			geo.FBX_Deformer = skeleton;
@@ -58159,7 +58159,7 @@ define(['exports'], function (exports) { 'use strict';
 
   		if ( buffers.normal.length > 0 ) {
 
-  			var normalAttribute = new Float32BufferAttribute$1( buffers.normal, 3 );
+  			var normalAttribute = new Float32BufferAttribute( buffers.normal, 3 );
 
   			var normalMatrix = new Matrix3().getNormalMatrix( preTransform );
   			normalMatrix.applyToBufferAttribute( normalAttribute );
@@ -58180,7 +58180,7 @@ define(['exports'], function (exports) { 'use strict';
 
   			}
 
-  			geo.addAttribute( name, new Float32BufferAttribute$1( buffers.uvs[ i ], 2 ) );
+  			geo.addAttribute( name, new Float32BufferAttribute( buffers.uvs[ i ], 2 ) );
 
   		} );
 
@@ -58657,7 +58657,7 @@ define(['exports'], function (exports) { 'use strict';
 
   		var morphBuffers = genBuffers( morphGeoInfo );
 
-  		var positionAttribute = new Float32BufferAttribute$1( morphBuffers.vertex, 3 );
+  		var positionAttribute = new Float32BufferAttribute( morphBuffers.vertex, 3 );
   		positionAttribute.name = morphGeoNode.attrName;
 
   		preTransform.applyToBufferAttribute( positionAttribute );
@@ -61207,7 +61207,7 @@ define(['exports'], function (exports) { 'use strict';
   	function addObject( vertex, extruding ) {
 
   		var geometry = new BufferGeometry();
-  		geometry.addAttribute( 'position', new Float32BufferAttribute$1( vertex, 3 ) );
+  		geometry.addAttribute( 'position', new Float32BufferAttribute( vertex, 3 ) );
 
   		var segments = new LineSegments( geometry, extruding ? extrudingMaterial : pathMaterial );
   		segments.name = 'layer' + i;
@@ -67130,7 +67130,7 @@ define(['exports'], function (exports) { 'use strict';
   				var morph = data.morphs[ i ];
   				var params = { name: morph.name };
 
-  				var attribute = new Float32BufferAttribute$1( data.metadata.vertexCount * 3, 3 );
+  				var attribute = new Float32BufferAttribute( data.metadata.vertexCount * 3, 3 );
   				attribute.name = morph.name;
 
   				for ( var j = 0; j < data.metadata.vertexCount * 3; j ++ ) {
@@ -67244,11 +67244,11 @@ define(['exports'], function (exports) { 'use strict';
 
   			var geometry = new BufferGeometry();
 
-  			geometry.addAttribute( 'position', new Float32BufferAttribute$1( positions, 3 ) );
-  			geometry.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
-  			geometry.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
+  			geometry.addAttribute( 'position', new Float32BufferAttribute( positions, 3 ) );
+  			geometry.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
+  			geometry.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
   			geometry.addAttribute( 'skinIndex', new Uint16BufferAttribute( skinIndices, 4 ) );
-  			geometry.addAttribute( 'skinWeight', new Float32BufferAttribute$1( skinWeights, 4 ) );
+  			geometry.addAttribute( 'skinWeight', new Float32BufferAttribute( skinWeights, 4 ) );
   			geometry.setIndex( indices );
 
   			for ( var i = 0, il = groups.length; i < il; i ++ ) {
@@ -71337,11 +71337,11 @@ define(['exports'], function (exports) { 'use strict';
 
   				var buffergeometry = new BufferGeometry();
 
-  				buffergeometry.addAttribute( 'position', new Float32BufferAttribute$1( geometry.vertices, 3 ) );
+  				buffergeometry.addAttribute( 'position', new Float32BufferAttribute( geometry.vertices, 3 ) );
 
   				if ( geometry.normals.length > 0 ) {
 
-  					buffergeometry.addAttribute( 'normal', new Float32BufferAttribute$1( geometry.normals, 3 ) );
+  					buffergeometry.addAttribute( 'normal', new Float32BufferAttribute( geometry.normals, 3 ) );
 
   				} else {
 
@@ -71352,13 +71352,13 @@ define(['exports'], function (exports) { 'use strict';
   				if ( geometry.colors.length > 0 ) {
 
   					hasVertexColors = true;
-  					buffergeometry.addAttribute( 'color', new Float32BufferAttribute$1( geometry.colors, 3 ) );
+  					buffergeometry.addAttribute( 'color', new Float32BufferAttribute( geometry.colors, 3 ) );
 
   				}
 
   				if ( geometry.uvs.length > 0 ) {
 
-  					buffergeometry.addAttribute( 'uv', new Float32BufferAttribute$1( geometry.uvs, 2 ) );
+  					buffergeometry.addAttribute( 'uv', new Float32BufferAttribute( geometry.uvs, 2 ) );
 
   				}
 
@@ -73013,9 +73013,9 @@ define(['exports'], function (exports) { 'use strict';
 
   		var geometry = new BufferGeometry();
 
-  		if ( position.length > 0 ) { geometry.addAttribute( 'position', new Float32BufferAttribute$1( position, 3 ) ); }
-  		if ( normal.length > 0 ) { geometry.addAttribute( 'normal', new Float32BufferAttribute$1( normal, 3 ) ); }
-  		if ( color.length > 0 ) { geometry.addAttribute( 'color', new Float32BufferAttribute$1( color, 3 ) ); }
+  		if ( position.length > 0 ) { geometry.addAttribute( 'position', new Float32BufferAttribute( position, 3 ) ); }
+  		if ( normal.length > 0 ) { geometry.addAttribute( 'normal', new Float32BufferAttribute( normal, 3 ) ); }
+  		if ( color.length > 0 ) { geometry.addAttribute( 'color', new Float32BufferAttribute( color, 3 ) ); }
 
   		geometry.computeBoundingSphere();
 
@@ -73172,10 +73172,10 @@ define(['exports'], function (exports) { 'use strict';
 
   			// build geometry
 
-  			geometryAtoms.addAttribute( 'position', new Float32BufferAttribute$1( verticesAtoms, 3 ) );
-  			geometryAtoms.addAttribute( 'color', new Float32BufferAttribute$1( colorsAtoms, 3 ) );
+  			geometryAtoms.addAttribute( 'position', new Float32BufferAttribute( verticesAtoms, 3 ) );
+  			geometryAtoms.addAttribute( 'color', new Float32BufferAttribute( colorsAtoms, 3 ) );
 
-  			geometryBonds.addAttribute( 'position', new Float32BufferAttribute$1( verticesBonds, 3 ) );
+  			geometryBonds.addAttribute( 'position', new Float32BufferAttribute( verticesBonds, 3 ) );
 
   			return build;
 
@@ -73277,11 +73277,11 @@ define(['exports'], function (exports) { 'use strict';
   				switch ( type ) {
 
   					case 'float32':
-  						attribute = new Float32BufferAttribute$1( array.data, size );
+  						attribute = new Float32BufferAttribute( array.data, size );
   						break;
 
   					case 'uint8':
-  						attribute = new Uint8BufferAttribute$1( array.data, size );
+  						attribute = new Uint8BufferAttribute( array.data, size );
   						break;
 
   					case 'uint16':
@@ -73692,25 +73692,25 @@ define(['exports'], function (exports) { 'use strict';
 
   			}
 
-  			geometry.addAttribute( 'position', new Float32BufferAttribute$1( buffer.vertices, 3 ) );
+  			geometry.addAttribute( 'position', new Float32BufferAttribute( buffer.vertices, 3 ) );
 
   			// optional buffer data
 
   			if ( buffer.normals.length > 0 ) {
 
-  				geometry.addAttribute( 'normal', new Float32BufferAttribute$1( buffer.normals, 3 ) );
+  				geometry.addAttribute( 'normal', new Float32BufferAttribute( buffer.normals, 3 ) );
 
   			}
 
   			if ( buffer.uvs.length > 0 ) {
 
-  				geometry.addAttribute( 'uv', new Float32BufferAttribute$1( buffer.uvs, 2 ) );
+  				geometry.addAttribute( 'uv', new Float32BufferAttribute( buffer.uvs, 2 ) );
 
   			}
 
   			if ( buffer.colors.length > 0 ) {
 
-  				geometry.addAttribute( 'color', new Float32BufferAttribute$1( buffer.colors, 3 ) );
+  				geometry.addAttribute( 'color', new Float32BufferAttribute( buffer.colors, 3 ) );
 
   			}
 
@@ -74628,8 +74628,8 @@ define(['exports'], function (exports) { 'use strict';
 
   			}
 
-  			geometry.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-  			geometry.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
+  			geometry.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+  			geometry.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
 
   			return geometry;
 
@@ -80688,11 +80688,11 @@ define(['exports'], function (exports) { 'use strict';
   						// we need to store it on the geometry for use with defines
   						geometry.solid = data.solid;
 
-  						geometry.addAttribute( 'position', new Float32BufferAttribute$1( positions, 3 ) );
+  						geometry.addAttribute( 'position', new Float32BufferAttribute( positions, 3 ) );
 
   						if ( uvs.length > 0 ) {
 
-  							geometry.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
+  							geometry.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
 
   						}
 
@@ -126462,9 +126462,9 @@ define(['exports'], function (exports) { 'use strict';
   	// build geometry
 
   	this.setIndex( indices );
-  	this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-  	this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
-  	this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
+  	this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+  	this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
+  	this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
 
   }
 
@@ -126617,9 +126617,9 @@ define(['exports'], function (exports) { 'use strict';
   	// build geometry
 
   	this.setIndex( indices );
-  	this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-  	this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
-  	this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
+  	this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+  	this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
+  	this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
 
 
   	// helper functions
@@ -128495,7 +128495,7 @@ define(['exports'], function (exports) { 'use strict';
 
   	// build geometry
 
-  	this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
+  	this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
 
   }
 
@@ -128563,8 +128563,8 @@ define(['exports'], function (exports) { 'use strict';
 
   	// build geometry
 
-  	this.addAttribute( 'position', new Float32BufferAttribute$1( verticesArray, 3 ) );
-  	this.addAttribute( 'uv', new Float32BufferAttribute$1( uvArray, 2 ) );
+  	this.addAttribute( 'position', new Float32BufferAttribute( verticesArray, 3 ) );
+  	this.addAttribute( 'uv', new Float32BufferAttribute( uvArray, 2 ) );
 
   	this.computeVertexNormals();
 
@@ -129419,8 +129419,8 @@ define(['exports'], function (exports) { 'use strict';
   	// build geometry
 
   	this.setIndex( indices );
-  	this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-  	this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
+  	this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+  	this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
 
   	// generate normals
 
@@ -129612,9 +129612,9 @@ define(['exports'], function (exports) { 'use strict';
   	// build geometry
 
   	this.setIndex( indices );
-  	this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-  	this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
-  	this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
+  	this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+  	this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
+  	this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
 
   }
 
@@ -129751,9 +129751,9 @@ define(['exports'], function (exports) { 'use strict';
   	// build geometry
 
   	this.setIndex( indices );
-  	this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-  	this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
-  	this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
+  	this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+  	this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
+  	this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
 
   }
 
@@ -130020,9 +130020,9 @@ define(['exports'], function (exports) { 'use strict';
   	// build geometry
 
   	this.setIndex( indices );
-  	this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-  	this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
-  	this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
+  	this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+  	this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
+  	this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
 
   	// this function calculates the current position on the torus curve
 
@@ -130132,9 +130132,9 @@ define(['exports'], function (exports) { 'use strict';
   	// build geometry
 
   	this.setIndex( indices );
-  	this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-  	this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
-  	this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
+  	this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+  	this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
+  	this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
 
   	// functions
 
@@ -130265,7 +130265,7 @@ define(['exports'], function (exports) { 'use strict';
   	if ( lineGeometry === undefined ) {
 
   		lineGeometry = new BufferGeometry();
-  		lineGeometry.addAttribute( 'position', new Float32BufferAttribute$1( [ 0, 0, 0, 0, 1, 0 ], 3 ) );
+  		lineGeometry.addAttribute( 'position', new Float32BufferAttribute( [ 0, 0, 0, 0, 1, 0 ], 3 ) );
 
   		coneGeometry = new CylinderBufferGeometry( 0, 0.5, 1, 5, 1 );
   		coneGeometry.translate( 0, - 0.5, 0 );
@@ -130359,8 +130359,8 @@ define(['exports'], function (exports) { 'use strict';
   	];
 
   	var geometry = new BufferGeometry();
-  	geometry.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-  	geometry.addAttribute( 'color', new Float32BufferAttribute$1( colors, 3 ) );
+  	geometry.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+  	geometry.addAttribute( 'color', new Float32BufferAttribute( colors, 3 ) );
 
   	var material = new LineBasicMaterial( { vertexColors: VertexColors } );
 
@@ -130387,7 +130387,7 @@ define(['exports'], function (exports) { 'use strict';
 
   	geometry.setIndex( new BufferAttribute( indices, 1 ) );
 
-  	geometry.addAttribute( 'position', new Float32BufferAttribute$1( positions, 3 ) );
+  	geometry.addAttribute( 'position', new Float32BufferAttribute( positions, 3 ) );
 
   	LineSegments.call( this, geometry, new LineBasicMaterial( { color: color } ) );
 
@@ -130501,8 +130501,8 @@ define(['exports'], function (exports) { 'use strict';
 
   	}
 
-  	geometry.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-  	geometry.addAttribute( 'color', new Float32BufferAttribute$1( colors, 3 ) );
+  	geometry.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+  	geometry.addAttribute( 'color', new Float32BufferAttribute( colors, 3 ) );
 
   	LineSegments.call( this, geometry, material );
 
@@ -130618,7 +130618,7 @@ define(['exports'], function (exports) { 'use strict';
   	if ( size === undefined ) { size = 1; }
 
   	var geometry = new BufferGeometry();
-  	geometry.addAttribute( 'position', new Float32BufferAttribute$1( [
+  	geometry.addAttribute( 'position', new Float32BufferAttribute( [
   		- size, size, 0,
   		size, size, 0,
   		size, - size, 0,
@@ -130632,7 +130632,7 @@ define(['exports'], function (exports) { 'use strict';
   	this.add( this.lightPlane );
 
   	geometry = new BufferGeometry();
-  	geometry.addAttribute( 'position', new Float32BufferAttribute$1( [ 0, 0, 0, 0, 0, 1 ], 3 ) );
+  	geometry.addAttribute( 'position', new Float32BufferAttribute( [ 0, 0, 0, 0, 0, 1 ], 3 ) );
 
   	this.targetLine = new Line( geometry, material );
   	this.add( this.targetLine );
@@ -130718,7 +130718,7 @@ define(['exports'], function (exports) { 'use strict';
 
   	var geometry = new BufferGeometry();
 
-  	var positions = new Float32BufferAttribute$1( nNormals * 2 * 3, 3 );
+  	var positions = new Float32BufferAttribute( nNormals * 2 * 3, 3 );
 
   	geometry.addAttribute( 'position', positions );
 
@@ -130820,8 +130820,8 @@ define(['exports'], function (exports) { 'use strict';
   	}
 
   	var geometry = new BufferGeometry();
-  	geometry.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-  	geometry.addAttribute( 'color', new Float32BufferAttribute$1( colors, 3 ) );
+  	geometry.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+  	geometry.addAttribute( 'color', new Float32BufferAttribute( colors, 3 ) );
 
   	var material = new LineBasicMaterial( { vertexColors: VertexColors } );
 
@@ -130924,7 +130924,7 @@ define(['exports'], function (exports) { 'use strict';
   	var positions = [ 1, - 1, 1, - 1, 1, 1, - 1, - 1, 1, 1, 1, 1, - 1, 1, 1, - 1, - 1, 1, 1, - 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0 ];
 
   	var geometry = new BufferGeometry();
-  	geometry.addAttribute( 'position', new Float32BufferAttribute$1( positions, 3 ) );
+  	geometry.addAttribute( 'position', new Float32BufferAttribute( positions, 3 ) );
   	geometry.computeBoundingSphere();
 
   	Line.call( this, geometry, new LineBasicMaterial( { color: color } ) );
@@ -130934,7 +130934,7 @@ define(['exports'], function (exports) { 'use strict';
   	var positions2 = [ 1, 1, 1, - 1, 1, 1, - 1, - 1, 1, 1, 1, 1, - 1, - 1, 1, 1, - 1, 1 ];
 
   	var geometry2 = new BufferGeometry();
-  	geometry2.addAttribute( 'position', new Float32BufferAttribute$1( positions2, 3 ) );
+  	geometry2.addAttribute( 'position', new Float32BufferAttribute( positions2, 3 ) );
   	geometry2.computeBoundingSphere();
 
   	this.add( new Mesh( geometry2, new MeshBasicMaterial( { color: color, opacity: 0.2, transparent: true, depthWrite: false } ) ) );
@@ -131077,8 +131077,8 @@ define(['exports'], function (exports) { 'use strict';
   	}
 
   	var geometry = new BufferGeometry();
-  	geometry.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-  	geometry.addAttribute( 'color', new Float32BufferAttribute$1( colors, 3 ) );
+  	geometry.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+  	geometry.addAttribute( 'color', new Float32BufferAttribute( colors, 3 ) );
 
   	var material = new LineBasicMaterial( { vertexColors: VertexColors } );
 
@@ -131204,8 +131204,8 @@ define(['exports'], function (exports) { 'use strict';
 
   	}
 
-  	geometry.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-  	geometry.addAttribute( 'color', new Float32BufferAttribute$1( colors, 3 ) );
+  	geometry.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+  	geometry.addAttribute( 'color', new Float32BufferAttribute( colors, 3 ) );
 
   	var material = new LineBasicMaterial( { vertexColors: VertexColors, depthTest: false, depthWrite: false, transparent: true } );
 
@@ -131300,7 +131300,7 @@ define(['exports'], function (exports) { 'use strict';
 
   	}
 
-  	geometry.addAttribute( 'position', new Float32BufferAttribute$1( positions, 3 ) );
+  	geometry.addAttribute( 'position', new Float32BufferAttribute( positions, 3 ) );
 
   	var material = new LineBasicMaterial( { fog: false } );
 
@@ -131384,7 +131384,7 @@ define(['exports'], function (exports) { 'use strict';
 
   	var geometry = new BufferGeometry();
 
-  	var positions = new Float32BufferAttribute$1( nNormals * 2 * 3, 3 );
+  	var positions = new Float32BufferAttribute( nNormals * 2 * 3, 3 );
 
   	geometry.addAttribute( 'position', positions );
 
@@ -133792,14 +133792,14 @@ define(['exports'], function (exports) { 'use strict';
   exports.BasicDepthPacking = BasicDepthPacking;
   exports.RGBADepthPacking = RGBADepthPacking;
   exports.Float64BufferAttribute = Float64BufferAttribute;
-  exports.Float32BufferAttribute = Float32BufferAttribute$1;
+  exports.Float32BufferAttribute = Float32BufferAttribute;
   exports.Uint32BufferAttribute = Uint32BufferAttribute;
-  exports.Int32BufferAttribute = Int32BufferAttribute$1;
+  exports.Int32BufferAttribute = Int32BufferAttribute;
   exports.Uint16BufferAttribute = Uint16BufferAttribute;
-  exports.Int16BufferAttribute = Int16BufferAttribute$1;
+  exports.Int16BufferAttribute = Int16BufferAttribute;
   exports.Uint8ClampedBufferAttribute = Uint8ClampedBufferAttribute;
-  exports.Uint8BufferAttribute = Uint8BufferAttribute$1;
-  exports.Int8BufferAttribute = Int8BufferAttribute$1;
+  exports.Uint8BufferAttribute = Uint8BufferAttribute;
+  exports.Int8BufferAttribute = Int8BufferAttribute;
   exports.BufferAttribute = BufferAttribute;
   exports.BufferGeometry = BufferGeometry;
   exports.Clock = Clock;
