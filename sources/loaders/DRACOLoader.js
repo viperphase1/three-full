@@ -6,8 +6,13 @@ import {
 } from '../constants.js'
 import { DefaultLoadingManager } from './LoadingManager.js'
 import {
+    Int8BufferAttribute,
+    Int16BufferAttribute,
+    Int32BufferAttribute,
+    Uint8BufferAttribute,
 	Uint16BufferAttribute,
-	Uint32BufferAttribute
+	Uint32BufferAttribute,
+    Float32BufferAttribute
 } from '../core/BufferAttribute.js'
 
 // Copyright 2016 The Draco Authors.
